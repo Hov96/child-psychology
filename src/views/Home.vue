@@ -76,7 +76,7 @@
     <section class="languages">
       <h2 class="md text-center my-2">Supported Languages</h2>
       <div class="flex">
-        <div v-for="(book, index) in allBooks" :key="index">
+        <!-- <div v-for="(book, index) in allBooks" :key="index">
           <div class="card">
             <router-link :to="{ name: 'Book', params: { id: book.id } }">
               <div class="card__item">
@@ -93,7 +93,59 @@
               </div>
             </router-link>
           </div>
-        </div>
+        </div> -->
+        <splide :options="options">
+          <splide-slide>
+            <div class="splide-item">
+              <img src="@/assets/default-book.png" />
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id accusamus
+                dolorem, ex necessitatibus adipisci blanditiis architecto ipsum provident
+                quod, rem autem nisi quae quia at!
+              </div>
+            </div>
+          </splide-slide>
+          <splide-slide>
+            <div class="splide-item">
+              <img src="@/assets/default-book.png" />
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id accusamus
+                dolorem, ex necessitatibus adipisci blanditiis architecto ipsum provident
+                quod, rem autem nisi quae quia at!
+              </div>
+            </div>
+          </splide-slide>
+          <splide-slide>
+            <div class="splide-item">
+              <img src="@/assets/default-book.png" />
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id accusamus
+                dolorem, ex necessitatibus adipisci blanditiis architecto ipsum provident
+                quod, rem autem nisi quae quia at!
+              </div>
+            </div>
+          </splide-slide>
+          <splide-slide>
+            <div class="splide-item">
+              <img src="@/assets/default-book.png" />
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id accusamus
+                dolorem, ex necessitatibus adipisci blanditiis architecto ipsum provident
+                quod, rem autem nisi quae quia at!
+              </div>
+            </div>
+          </splide-slide>
+          <splide-slide>
+            <div class="splide-item">
+              <img src="@/assets/default-book.png" />
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id accusamus
+                dolorem, ex necessitatibus adipisci blanditiis architecto ipsum provident
+                quod, rem autem nisi quae quia at!
+              </div>
+            </div>
+          </splide-slide>
+        </splide>
       </div>
     </section>
   </div>
@@ -101,12 +153,33 @@
 
 <script>
 // Components
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 export default {
   name: "HomePage",
+  components: { Splide, SplideSlide },
   data() {
     return {
       allBooks: [],
+      options: {
+        rewind: true,
+        perPage: 3,
+        perMove: 1,
+        type: "loop",
+        speed: 1000,
+        gap: "20px",
+        padding: "20px",
+        pagination: false,
+        breakpoints: {
+          1200: {
+            perPage: 2,
+          },
+          870: {
+            perPage: 1,
+          },
+        },
+      },
     };
   },
   created() {
@@ -151,6 +224,95 @@ export default {
     }
     &--author {
       font-size: 15px;
+    }
+  }
+}
+
+// Splide
+.splide {
+  width: 100%;
+  height: 100%;
+}
+
+.splide__slide {
+  width: 460px;
+  height: 288px;
+}
+
+.splide__slide img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel_body {
+  position: relative;
+}
+
+.slide_options {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 115px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn_options {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.image_count {
+  background-color: rgba(1, 3, 2, 0.48);
+  width: 60px;
+  height: 28px;
+  padding: 5px 12px;
+  border-radius: 24px;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image_count span {
+  color: #fff;
+}
+
+.splide-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  img {
+    width: 40%;
+  }
+}
+
+.showcase {
+  background-image: url("../assets/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 576.98px) {
+  .carousel_body {
+    height: 204px;
+  }
+
+  .splide__slide img {
+    height: 204px;
+  }
+
+  .splide-item {
+    flex-direction: column;
+    img {
+      width: 100%;
     }
   }
 }
