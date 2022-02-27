@@ -277,6 +277,9 @@ img {
   background-color: $cp-color-primary;
   color: #fff;
   height: 70px;
+  .flex {
+    height: 70px;
+  }
 }
 
 .navbar ul {
